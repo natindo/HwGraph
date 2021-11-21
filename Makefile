@@ -9,7 +9,7 @@ SRCS = \
 all: clean build test
 
 $(TARGET): $(SRCS) 
-	$(CC) -Wpedantic -Wall -Wextra -I $(HDRS_DIR) -o $(TARGET) $(CFLAGS) $(SRCS)
+	$(CC) -Wpedantic -Wall -Wextra -I $(HDRS_DIR) -o $(TARGET) $(SRCS)
 
 build: $(TARGET)
 
