@@ -1,8 +1,11 @@
 #include "../include/utils.h"
 
+int DijAlg () {
+
+}
+
 int main(void) {
     int rowsAndCols = 1; // newline in counting lines
-    // int cols = 1; // without space in end of line
 
     int **matrix;
     int i, j;
@@ -14,15 +17,6 @@ int main(void) {
             rowsAndCols++;
 
     rewind(file);
-
-    // while ((c = fgetc(file)) != '\n') // counting columns
-    //     if (c == ' ')
-    //         cols++;
-
-    // printf("%d\n", rowsAndCols);
-    // printf("%d\n", cols);
-
-    //rewind(file);
 
     matrix = (int**) malloc (rowsAndCols * sizeof(int *)); // probably cols * rowsAndCols
 
@@ -41,20 +35,13 @@ int main(void) {
     
     fclose(file);
 
-    for (i = 0; i < rowsAndCols; i++) {
-        for (j = 0; j < rowsAndCols; j++) {
-            printf("%3d", matrix[i][j]);
-        }
-        printf("\n");
-    }
-    int beg = 0;
-    //, end = 0;
+    int beg = 0, end = 0;
 
-    // printf("Enter the starting vertex number\n");
-    // scanf("%d", &beg);
+    printf("Enter the starting vertex number\n");
+    scanf("%d", &beg);
 
-    // printf("Enter the end vertex number\n");
-    // scanf("%d", &end);
+    printf("Enter the end vertex number\n");
+    scanf("%d", &end);
 
     int *minDistance = (int*) calloc (rowsAndCols + 1, sizeof(int));
     int *visitedVertexs = (int*) calloc (rowsAndCols + 1, sizeof(int));
@@ -73,14 +60,12 @@ int main(void) {
         minIndex = infinity;
         int min = infinity;
         int temp = 0;
-        //exit(0);
         for (int i = 0; i < rowsAndCols; i++) { // Если вершину ещё не обошли и вес меньше min
             if ((visitedVertexs[i] == 1) && (minDistance[i] < min)) { // Переприсваиваем значения
                 min = minDistance[i];
                 minIndex = i;
             }
         }
-        //exit(0);
     // Добавляем найденный минимальный вес
     // к текущему весу вершины
     // и сравниваем с текущим минимальным весом вершины
@@ -96,14 +81,14 @@ int main(void) {
         visitedVertexs[minIndex] = 0;
         }
     } while (minIndex < infinity);
-    //exit(0);
-    // Вывод кратчайших расстояний до вершин
-    printf("\nКратчайшие расстояния до вершин: \n");
-    
-    for (int i = 0; i < rowsAndCols; i++)
-        printf("%5d ", minDistance[i]);
 
-    printf("\n");
+    // Вывод кратчайших расстояний до вершин
+    printf("Кратчайшее расстояние от вершины %d до вершины %d \n", beg, end);
+    
+    // for (int i = 0; i < rowsAndCols; i++)
+    //     printf("%5d ", minDistance[i]);
+
+    printf("%d \n", minDistance[end]);
 
 
 
