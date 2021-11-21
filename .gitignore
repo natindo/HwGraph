@@ -1,3 +1,5 @@
+*.txt
+
 # Executables
 *.exe
 *.out
