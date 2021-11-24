@@ -3,13 +3,14 @@ HDRS_DIR = project/include
 
 SRCS = \
        project/src/main.c \
+	   project/src/algorithm.c 
 
-.PHONY: all build test clean
+.PHONY: all build clean test
 
-all: clean build test
+all: clean build
 
 $(TARGET): $(SRCS) 
-	$(CC) -Wpedantic -Wall -Wextra -I $(HDRS_DIR) -o $(TARGET) $(SRCS)
+	$(CC) -Wpedantic -Wall -Wextra -Werror -I $(HDRS_DIR) -o $(TARGET) $(SRCS)
 
 build: $(TARGET)
 

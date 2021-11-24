@@ -2,9 +2,8 @@
 #define PROJECT_INCLUDE_UTILS_H_
 
 #include <stdio.h>
-#include <math.h>
-#include <ctype.h>
 #include <stdlib.h>
-#include <stdbool.h>
+
+void DijAlg (int infinity, int rowsAndCols, int *visitedVertexs, int *minDistance, int **matrix);
 
 #endif //PROJECT_INCLUDE_UTILS_H_
