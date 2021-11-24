@@ -8,31 +8,13 @@ int main(void) {
     }
 
     int rowsAndCols = 1; // 1 тк отсутствует newline в последней строчке
-
-    while (!feof(file)) // подсчёт строк и столбцов
-         if (fgetc(file) == '\n')
-            rowsAndCols++;
-
-    rewind(file);
-
-    int **matrix = (int**) malloc (rowsAndCols * sizeof(int *));
-
-    for (int i = 0; i <= (rowsAndCols * 2); i++)
-        matrix[i] = (int * )malloc (rowsAndCols * (sizeof(int)));
-
     int infinity = 0; // номер, с которым будет производиться первое сравнение
 
-    for (int i = 0; i < rowsAndCols && !feof(file); i++) { // заполнение матрицы
-        for (int j = 0; j < rowsAndCols && !feof(file); j++) {
-            if (!fscanf(file, "%d", &matrix[i][j])) {
-                fprintf(stderr, "Error reading file\n");
-                exit(1);
-            }
-            infinity += matrix[i][j];
-        }
-    }
-    
-    fclose(file);
+    rowsAndCols = countRowsAndCol(file, rowsAndCols);
+
+    int **matrix = (int **) malloc (rowsAndCols * sizeof(int *));
+
+    infinity = initMatrix(file, matrix, &rowsAndCols, infinity);
 
     int beg, end;
 
@@ -46,7 +28,7 @@ int main(void) {
     printf("Enter the end vertex number\n");
     scanf("%d", &end);
 
-    if ((end < 0)|| (end > (rowsAndCols - 1))) {
+    if ((end < 0) || (end > (rowsAndCols - 1))) {
         exit (4);
     }
 
@@ -65,6 +47,6 @@ int main(void) {
 
     printf("Кратчайшее расстояние от вершины %d до вершины %d \n", beg, end);
     printf("%d \n", minDistance[end]);
-    
+
     return 0;
 }
