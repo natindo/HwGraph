@@ -4,7 +4,8 @@ HDRS_DIR = project/include
 SRCS = \
        project/src/main.c \
 	   project/src/algorithm.c \
-	   project/src/initMatrix.c
+	   project/src/initMatrix.c \
+	   project/src/errorChecking.c 
 
 .PHONY: all build clean test
 

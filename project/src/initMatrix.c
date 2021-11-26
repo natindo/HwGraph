@@ -1,6 +1,8 @@
 #include "utils.h"
 
-int countRowsAndCol (FILE *file, int rowsAndCols) { // подсчёт строк и столбцов
+int countRowsAndCol (FILE *file) { // подсчёт строк и столбцов
+    int rowsAndCols = 1; // 1 тк отсутствует newline в последней строчке
+    
     while (!feof(file))
         if (fgetc(file) == '\n')
             rowsAndCols++;
@@ -10,7 +12,9 @@ int countRowsAndCol (FILE *file, int rowsAndCols) { // подсчёт строк
     return rowsAndCols;
 }
 
-int initMatrix (FILE *file,int **matrix, int *rowsAndCols, int infinity) {
+int initMatrix (FILE *file,int **matrix, int *rowsAndCols) {
+    int infinity = 0;
+    
     for (int i = 0; i <= (*rowsAndCols * 2); i++)
         matrix[i] = (int *) malloc (*rowsAndCols * (sizeof(int)));
 
@@ -18,14 +22,13 @@ int initMatrix (FILE *file,int **matrix, int *rowsAndCols, int infinity) {
         for (int j = 0; j < *rowsAndCols && !feof(file); j++) {
             if (!fscanf(file, "%d", &matrix[i][j])) {
                 fprintf(stderr, "Error reading file\n");
-                exit(1);
+                exit(7);
             }
-            infinity += matrix[i][j];
+            infinity += matrix[i][j]; // подсчёт суммы всех элементов массива
         }
     }
     
     fclose(file);
-    free(file);
 
     return infinity;
 }
