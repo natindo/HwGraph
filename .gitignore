@@ -1,6 +1,6 @@
 *.txt
 *.json
-*.DS_Store
+.DS_Store
 
 # Executables
 *.exe
