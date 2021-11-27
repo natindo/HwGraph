@@ -17,5 +17,6 @@ int countRowsAndCol (FILE *file);
 void isHaveFreestandingVertex (int **matrix, int rowsAndCols);
 void inputVertexError (int beg, int end, int rowsAndCols);
 void fileOpenError (FILE *file);
+int read(int rowsAndCols);
 
 #endif //PROJECT_INCLUDE_UTILS_H_
