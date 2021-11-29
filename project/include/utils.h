@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <ctype.h>
 
 //algorithm
@@ -14,9 +13,11 @@ int initMatrix (FILE *file,int **matrix, int *rowsAndCols);
 int countRowsAndCol (FILE *file);
 
 //errors
-void isHaveFreestandingVertex (int **matrix, int rowsAndCols);
+void isHaveFreeStandingVertex (int **matrix, int rowsAndCols);
 void inputVertexError (int beg, int end, int rowsAndCols);
 void fileOpenError (FILE *file);
+
+//input
 int read(int rowsAndCols);
 
 #endif //PROJECT_INCLUDE_UTILS_H_

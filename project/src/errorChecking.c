@@ -5,7 +5,7 @@ void fileOpenError (FILE *file) {
         exit (1);
 }
 
-void inputVertexError (int beg, int end, int rowsAndCols) {
+void inputVertexError (int beg, int end, int rowsAndCols) { // проврека данных о начальной и конечной вершинах
     if ((beg < 0) || (beg > rowsAndCols))
         exit (2);
 
@@ -16,7 +16,7 @@ void inputVertexError (int beg, int end, int rowsAndCols) {
         exit (4);
 }
 
-void isHaveFreestandingVertex (int **matrix, int rowsAndCols) {
+void isHaveFreeStandingVertex (int **matrix, int rowsAndCols) { // проверка на налиие отдельно стоящей вершины
     int numberOfZeros = 0;
 
     for (int i = 0; i < rowsAndCols; i++) {
@@ -32,10 +32,17 @@ void isHaveFreestandingVertex (int **matrix, int rowsAndCols) {
     }
 }
 
-int read(int rowsAndCols) {
-    char c;
-    char *smth = (char*) malloc (rowsAndCols * sizeof(char));
+int read(int rowsAndCols) { // проверка чисел на ввод
+    int count = 0;
+
+    while (rowsAndCols) {
+        count++;
+        rowsAndCols = rowsAndCols / 10;
+    }
+    
+    char *smth = (char*) malloc (count * sizeof(char));
     int i = 0;
+    char c;
 
     while((c = getchar()) != EOF && c != '\n') {
         if (!isdigit(c))

@@ -6,19 +6,17 @@ int main(void) {
     fileOpenError (file);
 
     int rowsAndCols = countRowsAndCol(file);
-    int **matrix = (int **) malloc (rowsAndCols * sizeof(int *));
+    int **matrix = (int**) malloc (rowsAndCols * sizeof(int *));
 
     //инициаллизируем массив matrix
-    int infinity = initMatrix(file, matrix, &rowsAndCols); // номер, с которым будет производиться первое сравнение
+    int infinity = initMatrix(file, matrix, &rowsAndCols); // номер, с которым будет производиться первое сравнение в каждой вершине
 
-    isHaveFreestandingVertex (matrix, rowsAndCols);
+    isHaveFreeStandingVertex (matrix, rowsAndCols);
     
     printf("Enter the start vertex number\n");
-    // scanf("%d", &beg);
     int beg = read (rowsAndCols);
 
     printf("Enter the end vertex number\n");
-    // scanf("%d", &end);
     int end = read (rowsAndCols);
 
     inputVertexError (beg, end, rowsAndCols);

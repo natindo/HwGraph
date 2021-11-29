@@ -6,15 +6,14 @@ void DijAlg (int infinity, int rowsAndCols, int *visitedVertexs, int *minDistanc
         minIndex = infinity;
         int min = infinity;
         int temp = 0;
-        for (int i = 0; i < rowsAndCols; i++) { // Если вершину ещё не обошли и вес меньше min
-            if ((visitedVertexs[i] == 1) && (minDistance[i] < min)) { // Переприсваиваем значения
+        for (int i = 0; i < rowsAndCols; i++) {
+            if ((visitedVertexs[i] == 1) && (minDistance[i] < min)) { // если вершину ещё не обошли и вес меньше min
                 min = minDistance[i];
-                minIndex = i;
+                minIndex = i; // индекс вершины с минимальным значением
             }
         }
-    // Добавляем найденный минимальный вес
-    // к текущему весу вершины
-    // и сравниваем с текущим минимальным весом вершины
+    // Добавляем найденный минимальный вес к текущему весу вершины
+    // и сравниваем с минимальным весом вершины
         if (minIndex != infinity) {
             for (int i = 0; i < rowsAndCols; i++) {
                 if (matrix[minIndex][i] > 0) {
